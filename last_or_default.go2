@@ -1,0 +1,10 @@
+package enumerable
+
+func LastOrDefault(type TSource)(source IEnumerable(TSource)) TSource {
+	enumerator := source.Enumerator()
+	var last TSource
+	for enumerator.MoveNext() {
+		last = enumerator.Current()
+	}
+	return last
+}

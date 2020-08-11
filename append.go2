@@ -1,0 +1,38 @@
+package enumerable
+
+func Append(type TSource)(source IEnumerable(TSource), element TSource) IEnumerable(TSource) {
+	return appendEnumerable(TSource){source, element}
+}
+
+type appendEnumerable(type TSource) struct {
+	source  IEnumerable(TSource)
+	element TSource
+}
+
+func (a appendEnumerable(TSource)) Enumerator() IEnumerator(TSource) {
+	return &appendEnumerator(TSource){enumerator: a.source.Enumerator(), element: a.element}
+}
+
+type appendEnumerator(type TSource) struct {
+	enumerator IEnumerator(TSource)
+	element    TSource
+	enumrated  bool
+}
+
+func (a *appendEnumerator(TSource)) Current() TSource {
+	if !a.enumrated {
+		return a.enumerator.Current()
+	}
+	return a.element
+}
+
+func (a *appendEnumerator(TSource)) MoveNext() bool {
+	if a.enumerator.MoveNext() {
+		return true
+	}
+	if !a.enumrated {
+		a.enumrated = true
+		return true
+	}
+	return false
+}

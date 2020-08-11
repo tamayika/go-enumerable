@@ -1,0 +1,13 @@
+package enumerable
+
+func Single(type TSource)(source IEnumerable(TSource)) TSource {
+	enumerator := source.Enumerator()
+	if !enumerator.MoveNext() {
+		panic("empty sequence")
+	}
+	v := enumerator.Current()
+	if enumerator.MoveNext() {
+		panic("sequcense is not single")
+	}
+	return v
+}
