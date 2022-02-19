@@ -2,12 +2,7 @@
 
 This is enumerable library inspired by [.NET Enumerable](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable?view=netcore-3.1).
 
-This library is using [go2 generics proposal/type parameters](https://go.googlesource.com/proposal/+/refs/heads/master/design/go2draft-type-parameters.md), so you can use this only in go2go environment.
-To setup go2go environment, please refer https://github.com/golang/go/issues/39619.
-
 # Usage
-
-Currently(2020/08/11) go2go does not support go modules, so you can try in go-enumerable test.
 
 ```go
 package enumerable
@@ -48,5 +43,5 @@ public class Program
 
 Q. Why not method chain?
 
-A. Method type parameter must be declared in struct/interface in draft spec(https://go.googlesource.com/proposal/+/refs/heads/master/design/go2draft-type-parameters.md#methods-may-not-take-additional-type-arguments), so we can not define mapping method like `Select`.
+A. Method type parameter must be declared in struct/interface in spec(https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#no-parameterized-methods), so we can not define mapping method like `Select`.
 
