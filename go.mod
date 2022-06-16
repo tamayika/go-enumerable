@@ -1,5 +1,5 @@
-module github.com/tamayika40/go-enumerable
+module github.com/tamayika/go-enumerable
 
 go 1.18
 
-require golang.org/x/exp v0.0.0-20220218215828-6cf2b201936e
+require golang.org/x/exp v0.0.0-20220613132600-b0d781184e0d
